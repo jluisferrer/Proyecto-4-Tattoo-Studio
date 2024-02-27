@@ -1,5 +1,5 @@
 import express from "express"; //Importamos libreria express
-
+import 'dotenv/config'
 
 
 export const app = express();  //Creamos constante con el metodo express
