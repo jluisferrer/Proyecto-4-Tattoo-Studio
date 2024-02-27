@@ -1,5 +1,5 @@
 import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm"
-import { users } from "./users";
+import { users } from "./User";
 
 @Entity('roles')
 export class roles extends BaseEntity {

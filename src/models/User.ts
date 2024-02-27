@@ -1,6 +1,6 @@
-import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm"
-import { roles } from "./roles"
-import { appointments } from "./appointments";
+import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, RoleSpecification } from "typeorm"
+import { Role } from "./Role"
+import { Appointment } from "./Appointment";
 
 @Entity('users')
 export class users extends BaseEntity {
@@ -18,15 +18,16 @@ export class users extends BaseEntity {
 
     @Column({ name: 'password' })
     password!: string
+    
 
 
-    @ManyToOne(() => roles, (roles) => roles.users)
+    @ManyToOne(() => Role, (role) => role.user)
     @JoinColumn({ name: 'role_id' })
-    roles!: roles;
+    role!: Role;
 
-    @OneToMany(() => appointments, (appointments) => appointments.users)
+    @OneToMany(() => Appointment, (appointment) => appointment.user)
     @JoinColumn({ name: 'user_id' })
-    appointments!: appointments;
+    appointment!: Appointment;
 
 
 

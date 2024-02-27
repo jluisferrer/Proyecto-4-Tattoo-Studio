@@ -1,6 +1,6 @@
 import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
-import { users } from "./users";
-import { services } from "./services";
+import { users } from "./User";
+import { services } from "./Service";
 
 @Entity()
 export class appointments extends BaseEntity {
