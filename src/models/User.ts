@@ -3,7 +3,7 @@ import { Role } from "./Role"
 import { Appointment } from "./Appointment";
 
 @Entity('users')
-export class users extends BaseEntity {
+export class User extends BaseEntity {
     @PrimaryGeneratedColumn()
     id!: number
 
@@ -18,7 +18,7 @@ export class users extends BaseEntity {
 
     @Column({ name: 'password' })
     password!: string
-    
+
 
 
     @ManyToOne(() => Role, (role) => role.user)
@@ -27,7 +27,7 @@ export class users extends BaseEntity {
 
     @OneToMany(() => Appointment, (appointment) => appointment.user)
     @JoinColumn({ name: 'user_id' })
-    appointment!: Appointment;
+    appointment!: Appointment[]
 
 
 

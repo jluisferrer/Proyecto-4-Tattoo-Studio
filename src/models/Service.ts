@@ -1,8 +1,8 @@
 import { BaseEntity, Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm"
-import { appointments } from "./Appointment"
+import { Appointment } from "./Appointment"
 
 @Entity('services')
-export class services extends BaseEntity {
+export class Service extends BaseEntity {
     @PrimaryGeneratedColumn()
     id!: number
 
@@ -12,8 +12,8 @@ export class services extends BaseEntity {
     @Column({ name: 'description' })
     description!: string
 
-    @OneToMany(() => appointments, (appointments) => appointments.services)
+    @OneToMany(() => Appointment, (appointment) => appointment.service)
     @JoinColumn({ name: 'service_id' })
-    appointments!: appointments;
+    appointment!: Appointment[]
 
 }
