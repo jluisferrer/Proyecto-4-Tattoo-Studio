@@ -3,10 +3,7 @@ import "dotenv/config";
 import { createRole, deleteRole, getRoles, updateRole } from "./controllers/roleController";
 import { AppDataSource } from "./database/db";
 import { register } from "./controllers/authController";
-import { getUsers } from "./controllers/userController";
-import { getUserById } from "./controllers/userController";
-
-
+import { deleteUserById, getUserById, getUsers, updateUserById } from "./controllers/userController";
 
 
 const app: Application = express();
@@ -37,6 +34,8 @@ app.post('/api/register', register)
 //User routes
 app.get('/api/users', getUsers)
 app.get('/api/users/:id', getUserById)
+app.put('/api/users/:id', updateUserById)
+app.delete('/api/users/:id', deleteUserById)
 
 
 AppDataSource.initialize()
