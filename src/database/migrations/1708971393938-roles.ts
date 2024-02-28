@@ -21,12 +21,12 @@ export class Roles1708971393938 implements MigrationInterface {
                     },
                 ],
             }),
-            true          
+            true
         );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("roles"); 
+        await queryRunner.dropTable("roles");
     }
 
 }
