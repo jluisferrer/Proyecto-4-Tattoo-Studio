@@ -4,6 +4,7 @@ import { createRole, deleteRole, getRoles, updateRole } from "./controllers/role
 import { AppDataSource } from "./database/db";
 import { register } from "./controllers/authController";
 import { getUsers } from "./controllers/userController";
+import { getUserById } from "./controllers/userController";
 
 
 
@@ -35,6 +36,7 @@ app.post('/api/register', register)
 
 //User routes
 app.get('/api/users', getUsers)
+app.get('/api/users/:id', getUserById)
 
 
 AppDataSource.initialize()
