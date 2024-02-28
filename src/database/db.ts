@@ -15,7 +15,7 @@ export const AppDataSource = new DataSource({
     host: process.env.DB_HOST || "localhost",
     port: Number(process.env.DB_PORT) || 3308,
     username: process.env.DB_USER || "root",
-    password: process.env.DB_PASSWORD || "1234",
+    password: process.env.DB_PASSWORD || "",
     database: process.env.DB_DATABASE || "test",
     entities: [Role, User, Appointment, Service],
     migrations: [Roles1708971393938, Users1708971453794, Services1708971492544, Appointments1708971478080],

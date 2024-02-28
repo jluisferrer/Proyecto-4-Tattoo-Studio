@@ -1,8 +1,9 @@
 import express, { Application } from "express";
-import dotenv from "dotenv";
+import "dotenv/config";
 import { createRole, deleteRole, getRoles, updateRole } from "./controllers/roleController";
+import { AppDataSource } from "./database/db";
 
-dotenv.config();
+
 
 const app: Application = express();
 
@@ -25,6 +26,17 @@ app.put('/roles', updateRole)
 app.delete('/roles', deleteRole)
 app.put('/roles/:id', updateRole)
 app.delete('/roles/:id', deleteRole)
+
+AppDataSource.initialize()
+.then(()=>{
+    console.log('Database conected');
+    app.listen(PORT, ()=>{
+        console.log(`Server is running on port: ${PORT}`);
+    })
+})
+.catch(error =>{
+    console.log(error);
+})
 
 
 
