@@ -2,6 +2,9 @@ import express, { Application } from "express";
 import "dotenv/config";
 import { createRole, deleteRole, getRoles, updateRole } from "./controllers/roleController";
 import { AppDataSource } from "./database/db";
+import { register } from "./controllers/authController";
+import { getUsers } from "./controllers/userController";
+
 
 
 
@@ -26,6 +29,13 @@ app.put('/roles', updateRole)
 app.delete('/roles', deleteRole)
 app.put('/roles/:id', updateRole)
 app.delete('/roles/:id', deleteRole)
+
+//Auth routes
+app.post('/api/register', register)
+
+//User routes
+app.get('/api/users', getUsers)
+
 
 AppDataSource.initialize()
 .then(()=>{
