@@ -2,7 +2,7 @@ import express, { Application } from "express";
 import "dotenv/config";
 import { createRole, deleteRole, getRoles, updateRole } from "./controllers/roleController";
 import { AppDataSource } from "./database/db";
-import { register } from "./controllers/authController";
+import { login, register } from "./controllers/authController";
 import { deleteUserById, getUserById, getUsers, updateUserById } from "./controllers/userController";
 
 
@@ -29,7 +29,8 @@ app.put('/roles/:id', updateRole)
 app.delete('/roles/:id', deleteRole)
 
 //Auth routes
-app.post('/api/register', register)
+app.post('/api/auth/register', register)
+app.post('/api/auth/login', login)
 
 //User routes
 app.get('/api/users', getUsers)
@@ -52,6 +53,4 @@ AppDataSource.initialize()
 
 
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port: ${PORT}`);
-})
+
