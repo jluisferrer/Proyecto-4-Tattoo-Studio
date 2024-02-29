@@ -6,6 +6,7 @@ import { login, register } from "./controllers/authController";
 import { deleteUserById, getUserById, getUsers, updateUserById } from "./controllers/userController";
 import { auth } from "./middlewares/auth";
 import { isSuperAdmin } from "./middlewares/isSuperAdmin";
+import { getServices } from "./controllers/servicesController";
 
 
 const app: Application = express();
@@ -39,6 +40,9 @@ app.get('/api/users', auth, isSuperAdmin, getUsers)
 app.get('/api/users/:id', getUserById)
 app.put('/api/users/:id', updateUserById)
 app.delete('/api/users/:id', deleteUserById)
+
+//Services routes
+app.get('/api/services',getServices)
 
 
 AppDataSource.initialize()

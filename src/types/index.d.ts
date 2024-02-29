@@ -1,6 +1,6 @@
 export type TokenData = {
-    userId: number;
-    roleName: string;
+    userId: number;       //guarda id
+    roleName: string;     //guarda rol
   };
   
   declare global {
