@@ -54,7 +54,7 @@ export const getUserById = async (req: Request, res: Response) => {
 export const updateUserById = async (req: Request, res: Response) => {
   try {
     const userId = req.params.id;
-    const name = req.body.name;
+    const name = req.body.first_name;
     // validar datos
     const user = await User.findOneBy(
       {

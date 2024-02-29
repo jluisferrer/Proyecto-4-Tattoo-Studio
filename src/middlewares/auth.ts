@@ -27,7 +27,8 @@ export const auth = async (req: Request, res: Response, next: NextFunction) => {
     } catch (error) {
         return res.status(401).json({
             success: false,
-            message: "JWT not valid or malformed"
+            message: "JWT not valid or malformed",
+            error:error
         })
 
     }

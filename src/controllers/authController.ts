@@ -8,8 +8,9 @@ export const register = async (req: Request, res: Response) => {
   try {
     console.log(req.body);
     const email = req.body.email;
-    const password = req.body.password;
-    const name = req.body.name;
+    const password = req.body.password_hash;
+    const name = req.body.first_name;
+    const lastName=req.body.last_name
 
 
 
@@ -41,6 +42,7 @@ export const register = async (req: Request, res: Response) => {
 
     const newUser = await User.create({
       name: name,
+      lastName:lastName,
       email: email,
       password: passwordEncrypted,
       role: {
@@ -70,7 +72,7 @@ export const login = async (req: Request, res: Response) => {
   try {
     //recuperar info
     const email = req.body.email;
-    const password = req.body.password;
+    const password = req.body.password_hash;
     //validación email
     if (!email || !password) {
       return res.status(400).json({
