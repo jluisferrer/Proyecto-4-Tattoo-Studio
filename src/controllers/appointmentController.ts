@@ -12,7 +12,7 @@ export const PostAppointment = async (req: Request, res: Response) => {
             id: parseInt(service_id)
         });
         if (!service) {
-            return res.status(500).json({
+            return res.status(400).json({
                 success: false,
                 message: "Service not found"
             });
@@ -20,8 +20,8 @@ export const PostAppointment = async (req: Request, res: Response) => {
 
         const newAppointment = await Appointment.create({
             appointmentDate: appointment_date,
-            user: [{ id: user_id }],
-            service: [{ id: parseInt(service_id) }]
+            user: ({ id: user_id }),
+            service: ({ id: parseInt(service_id) })
         }).save();
 
         return res.status(201).json({
@@ -30,7 +30,7 @@ export const PostAppointment = async (req: Request, res: Response) => {
             data: newAppointment
         });
     } catch (error) {
-        return res.status(500).json({
+        return res.status(400).json({
             success: false,
             message: "Appointment can't be posted",
             error: error
@@ -51,7 +51,7 @@ export const UpdateAppointment = async (req: Request, res: Response) => {
         })
 
         if (!appointment) {
-            return res.status(500).json({
+            return res.status(400).json({
                 success: false,
                 message: "Appointment not found ",
 
@@ -67,7 +67,7 @@ export const UpdateAppointment = async (req: Request, res: Response) => {
             },
             {
                 appointmentDate: appointment_date,
-                service:[{id: parseInt(ServiceId)}],
+                service:({id: parseInt(ServiceId)}),
             },
 
         )
@@ -81,9 +81,68 @@ export const UpdateAppointment = async (req: Request, res: Response) => {
     }
 
     catch (error) {
-        res.status(500).json({
+        res.status(400).json({
             success: false,
             message: "Appointment can't be updated ",
+            error: error
+        })
+    }
+}
+
+export const RecoverAppointments = async (req: Request, res: Response) => {
+    try {
+        const AppointmentId = req.params.id;
+        const UserId = req.tokenData.userId;
+
+        const appointment = await Appointment.findOneBy({
+            id: parseInt(AppointmentId)
+        })
+
+        if (!appointment) {
+            return res.status(400).json({
+                success: false,
+                message: "Appointment not found "
+            })
+        }
+        const users = await Appointment.find({
+            where: {
+                id: parseInt(AppointmentId),
+                user:{id:UserId} 
+            }
+        })
+        res.status(201).json({
+            success: true,
+            message: "Appointment retrieved succesfully ",
+            data: users
+
+        })
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Appointment can't be recovered ",
+            error: error
+        })
+    }
+}
+export const GetUserAppointments = async (req: Request, res: Response) => {
+    try {
+        const UserId = req.tokenData.userId;
+        const appointment = await Appointment.find({
+            where: {
+                user:{id: UserId}
+            }
+        })
+        res.status(200).json({
+            success: true,
+            message: "Services retrieved succesfully ",
+            data: appointment
+
+        })
+    }
+    catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Service can't be retrieved ",
             error: error
         })
     }

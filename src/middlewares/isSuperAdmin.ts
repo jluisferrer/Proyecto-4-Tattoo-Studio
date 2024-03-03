@@ -1,21 +1,24 @@
 import { NextFunction, Request, Response } from "express";
 
-export const isSuperAdmin = (req: Request, res: Response, next: NextFunction) => {
-    try {
-        if (req.tokenData.roleName !== 'super_admin') {     // tiene que ser igual que el nombre del rol
-            res.status(401).json({
-                success: false,
-                message: "UNAUTHORIZED"
-
-            }
-            )
-        }
-        next();
-    } catch (error) {
-        res.status(500).json(
+export const isSuperAdmin =(req:Request,res:Response,next:NextFunction)=>{
+ try {
+    if (req.tokenData.roleName !=="super_admin"){
+       return res.status(401).json(
             {
                 success: false,
-                message: "You dont have permissions"
-}
-)}
+                message: "UNAUTHORIZED",
+                
+            })
+    }
+    next()
+ } 
+
+ catch (error) {
+    res.status(500).json(
+        {
+            success: false,
+            message: "You dont have permissions",
+            error: error
+        })
+ }
 }
