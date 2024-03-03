@@ -7,6 +7,7 @@ import { deleteUserById, getUserById, getUsers, updateUserById } from "./control
 import { auth } from "./middlewares/auth";
 import { isSuperAdmin } from "./middlewares/isSuperAdmin";
 import { getServices } from "./controllers/servicesController";
+import { PostAppointment, UpdateAppointment } from "./controllers/appointmentController";
 
 
 const app: Application = express();
@@ -25,9 +26,9 @@ app.get('/healthy', (req, res) => {
 
 // roles routes
 app.get('/roles', getRoles)
-app.post('/roles', createRole)
-app.put('/roles', updateRole)
-app.delete('/roles', deleteRole)
+app.post('/roles',auth, isSuperAdmin, createRole)
+app.put('/roles', auth, isSuperAdmin, updateRole)
+app.delete('/roles', auth, isSuperAdmin, deleteRole)
 app.put('/roles/:id', updateRole)
 app.delete('/roles/:id', deleteRole)
 
@@ -40,6 +41,12 @@ app.get('/api/users', auth, isSuperAdmin, getUsers)
 app.get('/api/users/:id', getUserById)
 app.put('/api/users/:id', updateUserById)
 app.delete('/api/users/:id', deleteUserById)
+
+//Apointment routes
+app.post('/api/appointments',auth, PostAppointment)
+app.put('/api/appointments',auth,UpdateAppointment)
+
+
 
 //Services routes
 app.get('/api/services',getServices)

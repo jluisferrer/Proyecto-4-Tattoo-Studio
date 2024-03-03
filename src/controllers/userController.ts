@@ -101,7 +101,7 @@ export const deleteUserById = async (req: Request, res: Response) => {
     })
 
     if(!userToRemove) {
-      res.status(404).json({
+      return  res.status(404).json({
         success: false,
         message: "user cant be deleted",
       })
