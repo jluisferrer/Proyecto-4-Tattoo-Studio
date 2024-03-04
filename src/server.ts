@@ -7,7 +7,7 @@ import { deleteUserById, getUserById, getUsers, updateUserById } from "./control
 import { auth } from "./middlewares/auth";
 import { isSuperAdmin } from "./middlewares/isSuperAdmin";
 import { getServices } from "./controllers/servicesController";
-import { PostAppointment, UpdateAppointment } from "./controllers/appointmentController";
+import { GetUserAppointments, PostAppointment, RecoverAppointments, UpdateAppointment } from "./controllers/appointmentController";
 
 
 const app: Application = express();
@@ -45,7 +45,8 @@ app.delete('/api/users/:id', deleteUserById)
 //Apointment routes
 app.post('/api/appointments',auth, PostAppointment)
 app.put('/api/appointments',auth,UpdateAppointment)
-
+app.get('/api/appointments/:id',auth,RecoverAppointments)
+app.get('/api/appointments',auth,GetUserAppointments)
 
 
 //Services routes

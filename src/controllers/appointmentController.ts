@@ -40,11 +40,14 @@ export const PostAppointment = async (req: Request, res: Response) => {
 
 export const UpdateAppointment = async (req: Request, res: Response) => {
     try {
-        const AppointmentId = req.body.id;
+        const AppointmentId = req.body.appointment_id;
         const UserId = req.tokenData.userId;
         const appointment_date = req.body.appointment_date;
         const ServiceId = req.body.service_id
-
+        // console.log(UserId)
+        // console.log(AppointmentId)
+        // console.log(appointment_date)
+        // console.log(ServiceId)
 
         const appointment = await Appointment.findOneBy({
             id: parseInt(AppointmentId)
@@ -61,13 +64,15 @@ export const UpdateAppointment = async (req: Request, res: Response) => {
             {
                 id: parseInt(AppointmentId),
 
-                user:{
-                id:UserId
-            } 
+                user: {
+                    id: UserId
+                }
             },
             {
                 appointmentDate: appointment_date,
-                service:({id: parseInt(ServiceId)}),
+                service: {
+                    id: 2
+                },
             },
 
         )
@@ -107,7 +112,7 @@ export const RecoverAppointments = async (req: Request, res: Response) => {
         const users = await Appointment.find({
             where: {
                 id: parseInt(AppointmentId),
-                user:{id:UserId} 
+                user: { id: UserId }
             }
         })
         res.status(201).json({
@@ -129,7 +134,7 @@ export const GetUserAppointments = async (req: Request, res: Response) => {
         const UserId = req.tokenData.userId;
         const appointment = await Appointment.find({
             where: {
-                user:{id: UserId}
+                user: { id: UserId }
             }
         })
         res.status(200).json({
