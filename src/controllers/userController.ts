@@ -2,18 +2,18 @@ import { Request, Response } from "express"
 import { User } from "../models/User"
 export const getUsers = async (req: Request, res: Response) => {
   try {
-    let limit = Number(req.query.limit) || 10
-    const page = Number(req.query.page) || 2
-    const skip = (page - 1) * limit 
+    // let limit = Number(req.query.limit) || 10
+    // const page = Number(req.query.page) || 2
+    // const skip = (page - 1) * limit 
 
-    if (limit>100){
-      limit=10
-      // return res.status(404).json({
-      // success:false,
-      // message:"Has superado el limite"
-      // })
-      // console.log()
-    }
+    // if (limit>100){
+    //   limit=10
+    //   // return res.status(404).json({
+    //   // success:false,
+    //   // message:"Has superado el limite"
+    //   // })
+    //   // console.log()
+    // }
 
     const users = await User.find(
       {
@@ -22,8 +22,8 @@ export const getUsers = async (req: Request, res: Response) => {
           name: true,
           email: true,
         },
-        take: limit,
-        skip: skip
+        // take: limit,
+        // skip: skip
 
       }
 

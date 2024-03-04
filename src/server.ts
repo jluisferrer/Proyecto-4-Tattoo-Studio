@@ -29,28 +29,28 @@ app.get('/roles', getRoles)
 app.post('/roles',auth, isSuperAdmin, createRole)
 app.put('/roles', auth, isSuperAdmin, updateRole)
 app.delete('/roles', auth, isSuperAdmin, deleteRole)
-app.put('/roles/:id', updateRole)
-app.delete('/roles/:id', deleteRole)
+app.put('/roles/:id',auth, isSuperAdmin, updateRole)
+app.delete('/roles/:id',auth, isSuperAdmin, deleteRole)
 
 //Auth routes
-app.post('/api/auth/register', register)
-app.post('/api/auth/login', login)
+app.post('/api/auth/register', register) //ok
+app.post('/api/auth/login', login)  //ok
 
 //User routes
-app.get('/api/users', auth, isSuperAdmin, getUsers)
-app.get('/api/users/:id', getUserById)
-app.put('/api/users/:id', updateUserById)
+app.get('/api/users', auth, isSuperAdmin, getUsers) //ok
+app.get('/api/users/profile/:id', getUserById)      //ok
+app.put('/api/users/profile/:id', updateUserById)  //ok
 app.delete('/api/users/:id', deleteUserById)
 
 //Apointment routes
-app.post('/api/appointments',auth, PostAppointment)
-app.put('/api/appointments',auth,UpdateAppointment)
-app.get('/api/appointments/:id',auth,RecoverAppointments)
-app.get('/api/appointments',auth,GetUserAppointments)
+app.post('/api/appointments',auth, PostAppointment) //ok
+app.put('/api/appointments',auth,UpdateAppointment) //ok
+app.get('/api/appointments/:id',auth,RecoverAppointments) //ok?
+app.get('/api/appointments',auth,GetUserAppointments)  //ok
 
 
 //Services routes
-app.get('/api/services',getServices)
+app.get('/api/services',getServices) //ok
 
 
 AppDataSource.initialize()

@@ -6,6 +6,7 @@ export const getRoles = (req: Request,res: Response) => {
     {
       success: true,
       message: "Roles retrieved successfuly"
+     
     }
   )
 }

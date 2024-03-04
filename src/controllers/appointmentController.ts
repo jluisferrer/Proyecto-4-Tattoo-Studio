@@ -21,7 +21,7 @@ export const PostAppointment = async (req: Request, res: Response) => {
         const newAppointment = await Appointment.create({
             appointmentDate: appointment_date,
             user: ({ id: user_id }),
-            service: ({ id: parseInt(service_id) })
+            service: { id: parseInt(service_id) }
         }).save();
 
         return res.status(201).json({
@@ -118,7 +118,8 @@ export const RecoverAppointments = async (req: Request, res: Response) => {
         res.status(201).json({
             success: true,
             message: "Appointment retrieved succesfully ",
-            data: users
+            data: appointment
+             
 
         })
     } catch (error) {
@@ -139,7 +140,7 @@ export const GetUserAppointments = async (req: Request, res: Response) => {
         })
         res.status(200).json({
             success: true,
-            message: "Services retrieved succesfully ",
+            message: "Appointments retrieved succesfully ",
             data: appointment
 
         })
@@ -147,7 +148,7 @@ export const GetUserAppointments = async (req: Request, res: Response) => {
     catch (error) {
         res.status(500).json({
             success: false,
-            message: "Service can't be retrieved ",
+            message: "Appointment can't be retrieved ",
             error: error
         })
     }
