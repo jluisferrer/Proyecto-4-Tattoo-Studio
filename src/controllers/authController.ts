@@ -1,48 +1,49 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
-import  jwt  from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import { User } from "../models/User";
 
 
 export const register = async (req: Request, res: Response) => {
   try {
-    console.log(req.body);
+
     const email = req.body.email;
     const password = req.body.password_hash;
     const name = req.body.first_name;
-    const lastName=req.body.last_name
+    const lastName = req.body.last_name
 
 
 
-    // Validacion password
+
     if (password.length < 6 || password.length > 10) {
       return res.status(400).json({
         success: false,
-        message: "La contraseña tiene que estar entre 6 y 10 caracateres"
+        message: "The password must be between 6 and 10 characters"
+
       })
     }
 
-    // Validacion email
+
     const validEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
     if (!validEmail.test(email)) {
       return res.status(400).json(
         {
           success: false,
-          message: "format email invalid"
+          message: "Invalid format mail"
         }
       )
     }
 
 
-    // tratamos la data si fuera necesario
+
     const passwordEncrypted = bcrypt.hashSync(password, 8);
 
-    // comprobamos que se genara la contraseña encriptada
-    console.log(passwordEncrypted);
+
+
 
     const newUser = await User.create({
       name: name,
-      lastName:lastName,
+      lastName: lastName,
       email: email,
       password: passwordEncrypted,
       role: {
@@ -62,7 +63,7 @@ export const register = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: "user cant be registered",
+      message: "User cant be registered",
       error: error
     })
   }
@@ -105,7 +106,7 @@ export const login = async (req: Request, res: Response) => {
       })
     }
     // devolver user
-    // console.log(user);
+
     // comparar passwords
 
     const isValidPassword = bcrypt.compareSync(password, user.password);
@@ -117,16 +118,16 @@ export const login = async (req: Request, res: Response) => {
     }
 
     //crear token
-   const token = jwt.sign(
+    const token = jwt.sign(
       {
         userId: user.id,
         roleName: user.role.name
       },
       process.env.JWT_SECRET as string,
       {
-        expiresIn:"2h"
+        expiresIn: "2h"
       }
-      )
+    )
 
 
     res.status(200).json({

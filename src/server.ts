@@ -26,11 +26,11 @@ app.get('/healthy', (req, res) => {
 
 // roles routes
 app.get('/roles', getRoles)
-app.post('/roles',auth, isSuperAdmin, createRole)
+app.post('/roles', auth, isSuperAdmin, createRole)
 app.put('/roles', auth, isSuperAdmin, updateRole)
 app.delete('/roles', auth, isSuperAdmin, deleteRole)
-app.put('/roles/:id',auth, isSuperAdmin, updateRole)
-app.delete('/roles/:id',auth, isSuperAdmin, deleteRole)
+app.put('/roles/:id', auth, isSuperAdmin, updateRole)
+app.delete('/roles/:id', auth, isSuperAdmin, deleteRole)
 
 //Auth routes
 app.post('/api/auth/register', register) //ok
@@ -43,26 +43,26 @@ app.put('/api/users/profile/:id', updateUserById)  //ok
 app.delete('/api/users/:id', deleteUserById)    //ok
 
 //Apointment routes
-app.post('/api/appointments',auth, PostAppointment) //ok
-app.put('/api/appointments',auth,UpdateAppointment) //ok
-app.get('/api/appointments/:id',auth,RecoverAppointments) //ok?
-app.get('/api/appointments',auth,GetUserAppointments)  //ok
+app.post('/api/appointments', auth, PostAppointment) //ok
+app.put('/api/appointments', auth, UpdateAppointment) //ok
+app.get('/api/appointments/:id', auth, RecoverAppointments) //ok?
+app.get('/api/appointments', auth, GetUserAppointments)  //ok
 
 
 //Services routes
-app.get('/api/services',getServices) //ok
+app.get('/api/services', getServices) //ok
 
 
 AppDataSource.initialize()
-.then(()=>{
+  .then(() => {
     console.log('Database conected');
-    app.listen(PORT, ()=>{
-        console.log(`Server is running on port: ${PORT}`);
+    app.listen(PORT, () => {
+      console.log(`Server is running on port: ${PORT}`);
     })
-})
-.catch(error =>{
+  })
+  .catch(error => {
     console.log(error);
-})
+  })
 
 
 

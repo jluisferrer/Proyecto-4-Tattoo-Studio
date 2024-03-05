@@ -44,10 +44,7 @@ export const UpdateAppointment = async (req: Request, res: Response) => {
         const UserId = req.tokenData.userId;
         const appointment_date = req.body.appointment_date;
         const ServiceId = req.body.service_id
-        // console.log(UserId)
-        // console.log(AppointmentId)
-        // console.log(appointment_date)
-        // console.log(ServiceId)
+
 
         const appointment = await Appointment.findOneBy({
             id: parseInt(AppointmentId)
@@ -119,7 +116,7 @@ export const RecoverAppointments = async (req: Request, res: Response) => {
             success: true,
             message: "Appointment retrieved succesfully ",
             data: appointment
-             
+
 
         })
     } catch (error) {

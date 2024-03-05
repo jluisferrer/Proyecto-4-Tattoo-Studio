@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm"
+import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm"
 import { Role } from "./Role"
 import { Appointment } from "./Appointment";
 
@@ -16,7 +16,7 @@ export class User extends BaseEntity {
     @Column({ name: 'email' })
     email!: string
 
-    @Column({ name: 'password_hash',select:false })
+    @Column({ name: 'password', select: false })
     password!: string
 
 

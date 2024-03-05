@@ -12,7 +12,7 @@ export const getUsers = async (req: Request, res: Response) => {
     //   // success:false,
     //   // message:"Has superado el limite"
     //   // })
-    //   // console.log()
+    //  
     // }
 
     const users = await User.find(
@@ -30,13 +30,13 @@ export const getUsers = async (req: Request, res: Response) => {
     )
     res.status(200).json({
       success: true,
-      message: "users retrieved successfully",
+      message: "Users retrieved successfully",
       data: users
     })
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: "users cant be retrieved",
+      message: "Users cant be retrieved",
       error: error
     })
   }
@@ -52,18 +52,18 @@ export const getUserById = async (req: Request, res: Response) => {
     if (!user) {
       return res.status(404).json({
         success: false,
-        message: "user not found",
+        message: "User not found",
       })
     }
     res.status(200).json({
       success: true,
-      message: "user retrieved",
+      message: "User retrieved",
       data: user
     })
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: "user cant be retrieved",
+      message: "User cant be retrieved",
       error: error
     })
   }
@@ -72,7 +72,7 @@ export const updateUserById = async (req: Request, res: Response) => {
   try {
     const userId = req.params.id;
     const name = req.body.first_name;
-    // validar datos
+
     const user = await User.findOneBy(
       {
         id: parseInt(userId)
@@ -81,11 +81,10 @@ export const updateUserById = async (req: Request, res: Response) => {
     if (!user) {
       return res.status(404).json({
         success: false,
-        message: "user not found",
+        message: "User not found",
       })
     }
-    // tratar datos
-    // actualizar en BD
+
     const userUpdated = await User.update(
       {
         id: parseInt(userId)
@@ -94,16 +93,16 @@ export const updateUserById = async (req: Request, res: Response) => {
         name: name
       }
     );
-    //responder
+
     res.status(200).json({
       success: true,
-      message: "user updated",
+      message: "User updated",
       data: userUpdated
     })
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: "user cant be updated",
+      message: "User cant be updated",
       error: error
     })
   }
@@ -120,7 +119,7 @@ export const deleteUserById = async (req: Request, res: Response) => {
     if (!userToRemove) {
       return res.status(404).json({
         success: false,
-        message: "user cant be deleted",
+        message: "User cant be deleted",
       })
     }
 
@@ -128,13 +127,13 @@ export const deleteUserById = async (req: Request, res: Response) => {
 
     res.status(200).json({
       success: false,
-      message: "user deleted",
+      message: "User deleted",
       data: userDeleted
     })
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: "user cant be deleted",
+      message: "User cant be deleted",
       error: error
     })
   }
