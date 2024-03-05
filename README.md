@@ -1,17 +1,17 @@
 # Tattoo Studio ✒️
 
-Este es mi cuarto proyecto en la academia GeekHubs, se trata de una aplicacion backend de un estudio de tatuajes donde puedes registrar usuarios con diferentes roles, loguear con estos, asi como ver perfil de cada usuario y modificar algunos campos, también puedes ver los servicios que ofrece el estudio asi como reservar citas para diferentes tratamientos o modificar estas adaptandolas a tu disponibilidad. A continuacion se explican mas detalles sobre el proyecto.
+Este es mi cuarto proyecto en la academia GeekHubs, se trata de una aplicación backend de un estudio de tatuajes donde puedes registrar usuarios con diferentes roles, loguear con estos, así como ver perfil de cada usuario y modificar algunos campos, también puedes ver los servicios que ofrece el estudio asi como reservar citas para diferentes tratamientos o modificar estas adaptandolas a tu disponibilidad. A continuación se explican mas detalles sobre el proyecto.
 
 <summary> Indice 🧾</summary>
 
 
 - [Tecnologias usadas ⚙](#tecnologias-)
 - [Esquema 🗺️](#esquema)
-- [Instalacion 🏗️](#instalacion-)
+- [Instalación 🏗️](#instalacion-)
 - [Endpoints 🎛️](#endpoints)
 - [Fallos 🕷️](#fallos-)
 - [Autor 🎨](#autor-)
-- [Tiempo de realizacion ⏳](#tiempo-de-realizacion-)
+- [Tiempo de realización ⏳](#tiempo-de-realizacion-)
 
 
 ## Tecnologias usadas
@@ -36,7 +36,7 @@ alt="TypeScript" />
 ![SchemeStudioTatoo](https://github.com/jluisferrer/Proyecto-4/assets/157707370/e2c1e793-a0b1-4ec8-bc78-fe80c9badaad)
 
 
-## Instalacion
+## Instalación
 
 <details>
 
@@ -107,7 +107,7 @@ npm run seed-appointments
 
 ## Endpoints
 
-***Instalacion de Thunder Client para VSC***
+***Instalación de Thunder Client para VSC***
 
 Dentro de Visual studio code en el apartado extensiones (normalmente alojado en la parte inferior izquierda) deberá buscar "Thunder Client" e instalar el plugin. 
 Junto con el proyecto se adjunta un archivo llamado "thunder-collection_STUDIO TATTOO.json" donde se encuentran todos los endpoints disponibles, para agregar esta colección pulse sobre el icono de Thunder Client que aparecerá despues de instalarlo en su VSC vaya al apartado "Collections" haga clic en import y busque el archivo "thunder-collection_STUDIO TATTOO.json" para agregarlo. Así podra probar todas las funciones que ofrece este proyecto. A continuacón se muestran todos los edpoints disponibles:
