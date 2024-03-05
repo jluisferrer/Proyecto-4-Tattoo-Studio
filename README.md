@@ -1,4 +1,4 @@
-# Tattoo Studio
+# Tattoo Studio ✒️
 
 Este es mi cuarto proyecto en la academia GeekHubs, se trata de una aplicacion backend de un estudio de tatuajes donde puedes registrar usuarios con diferentes roles, loguear con estos, asi como ver perfil de cada usuario y modificar algunos campos, también puedes ver los servicios que ofrece el estudio asi como reservar citas para diferentes tratamientos o modificar estas adaptandolas a tu disponibilidad. A continuacion se explican mas detalles sobre el proyecto.
 
@@ -10,7 +10,7 @@ Este es mi cuarto proyecto en la academia GeekHubs, se trata de una aplicacion b
 - [Instalacion 🏗️](#instalacion-)
 - [Endpoints 🎛️](#endpoints)
 - [Fallos 🕷️](#fallos-)
-- [Autor 🖋️](#autor-)
+- [Autor 🎨](#autor-)
 - [Tiempo de realizacion ⏳](#tiempo-de-realizacion-)
 
 
