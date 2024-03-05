@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "STUDIO TATTOO ",
-    "dateExported": "2024-03-04T22:22:13.520Z",
+    "dateExported": "2024-03-05T19:41:49.378Z",
     "version": "1.1",
     "folders": [
         {
@@ -50,14 +50,15 @@
             "method": "POST",
             "sortNum": 10000,
             "created": "2024-02-29T11:10:47.154Z",
-            "modified": "2024-03-03T14:15:05.368Z",
+            "modified": "2024-03-05T19:32:14.508Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"first_name\":\"Ramon\",\n  \"last_name\":\"tio\",\n  \"email\":\"ramon@mail.com\",\n  \"password_hash\":\"1234567\"\n  }\n",
+                "raw": "{\n  \"first_name\":\"Ramon\",\n  \"last_name\":\"tio\",\n  \"email\":\"hola@mail.com\",\n  \"password_hash\":\"1234567\"\n  }\n",
                 "form": []
             },
+            "reqType": "post",
             "tests": []
         },
         {
@@ -84,7 +85,7 @@
             "method": "POST",
             "sortNum": 10000,
             "created": "2024-02-29T11:10:47.165Z",
-            "modified": "2024-03-03T14:10:49.803Z",
+            "modified": "2024-03-05T18:19:18.751Z",
             "headers": [],
             "params": [],
             "body": {
@@ -92,9 +93,10 @@
                 "raw": "{\n  \"service_name\": \"ink_removal\",\n  \"description\": \"remove the name of your ex\"\n}",
                 "form": []
             },
+            "reqType": "post",
             "auth": {
                 "type": "bearer",
-                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInJvbGVOYW1lIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE3MDk0NzQ3ODAsImV4cCI6MTcwOTQ4MTk4MH0.Yg58O2MNYzcMMuBlq0klj-KndqSfzSKxoQ5vY-J9Znw",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInJvbGVOYW1lIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE3MDk2NjI2NjIsImV4cCI6MTcwOTY2OTg2Mn0.VTsIwB8kFHlzKtNC2jcosqexeWzbL0AkKl43nzKn7A8",
                 "bearerPrefix": "secreto"
             },
             "tests": []
@@ -108,14 +110,15 @@
             "method": "POST",
             "sortNum": 20000,
             "created": "2024-02-29T11:10:47.155Z",
-            "modified": "2024-03-03T17:36:30.336Z",
+            "modified": "2024-03-05T18:17:42.247Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"email\": \"jose@mail.com\",\n  \"password_hash\": \"1234567\"\n}",
+                "raw": "{\n  \"email\": \"super@super.com\",\n  \"password_hash\": \"123456\"\n}",
                 "form": []
             },
+            "reqType": "post",
             "tests": []
         },
         {
@@ -127,7 +130,7 @@
             "method": "PUT",
             "sortNum": 20000,
             "created": "2024-02-29T11:10:47.157Z",
-            "modified": "2024-03-04T08:50:42.111Z",
+            "modified": "2024-03-05T18:18:09.131Z",
             "headers": [],
             "params": [],
             "body": {
@@ -135,9 +138,10 @@
                 "raw": "{\n  \"appointment_id\": \"6\",\n  \"user_id\":\"1\",\n  \"appointment_date\": \"2024-03-10\",\n  \"service_id\": \"2\"\n}",
                 "form": []
             },
+            "reqType": "put",
             "auth": {
                 "type": "bearer",
-                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInJvbGVOYW1lIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE3MDk1NDE4OTQsImV4cCI6MTcwOTU0OTA5NH0.TjSo4PRs8TEHX8QOWm3EM2y7POH7pM2NW9kSwbT9tpc"
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInJvbGVOYW1lIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE3MDk2NjI2NjIsImV4cCI6MTcwOTY2OTg2Mn0.VTsIwB8kFHlzKtNC2jcosqexeWzbL0AkKl43nzKn7A8"
             },
             "tests": []
         },
@@ -194,13 +198,13 @@
             "method": "GET",
             "sortNum": 30000,
             "created": "2024-02-29T11:10:47.158Z",
-            "modified": "2024-03-04T18:19:27.486Z",
+            "modified": "2024-03-05T18:18:34.494Z",
             "headers": [],
             "params": [],
             "reqType": "get",
             "auth": {
                 "type": "bearer",
-                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInJvbGVOYW1lIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE3MDk1NzMxNDgsImV4cCI6MTcwOTU4MDM0OH0.6cLDCl1UvaBcBYAT9ON442_5iWiSwc6Kx7GvKao1rTk"
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInJvbGVOYW1lIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE3MDk2NjI2NjIsImV4cCI6MTcwOTY2OTg2Mn0.VTsIwB8kFHlzKtNC2jcosqexeWzbL0AkKl43nzKn7A8"
             },
             "tests": []
         },
@@ -229,11 +233,11 @@
             "colId": "83e5e05d-08fa-4e43-8a98-1c93aad65e5c",
             "containerId": "c9c9b325-f9b2-410c-b726-41d3041e39bd",
             "name": "UPDATE SERVICE BY ID",
-            "url": "localhost:4001/api/services/1",
+            "url": "localhost:4001/api/services/3",
             "method": "PUT",
             "sortNum": 30000,
             "created": "2024-02-29T11:10:47.167Z",
-            "modified": "2024-03-03T13:00:34.659Z",
+            "modified": "2024-03-05T18:19:39.476Z",
             "headers": [],
             "params": [],
             "body": {
@@ -241,6 +245,7 @@
                 "raw": "{\n  \"service_name\": \"ink_for_brave\"\n}\n",
                 "form": []
             },
+            "reqType": "put",
             "tests": []
         },
         {
@@ -252,13 +257,13 @@
             "method": "GET",
             "sortNum": 40000,
             "created": "2024-02-29T11:10:47.159Z",
-            "modified": "2024-03-04T17:26:10.618Z",
+            "modified": "2024-03-05T18:18:47.747Z",
             "headers": [],
             "params": [],
             "reqType": "get",
             "auth": {
                 "type": "bearer",
-                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInJvbGVOYW1lIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE3MDk1NzMxNDgsImV4cCI6MTcwOTU4MDM0OH0.6cLDCl1UvaBcBYAT9ON442_5iWiSwc6Kx7GvKao1rTk"
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInJvbGVOYW1lIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE3MDk2NjI2NjIsImV4cCI6MTcwOTY2OTg2Mn0.VTsIwB8kFHlzKtNC2jcosqexeWzbL0AkKl43nzKn7A8"
             },
             "tests": []
         },
@@ -300,7 +305,7 @@
             "method": "POST",
             "sortNum": 50000,
             "created": "2024-02-29T11:10:47.160Z",
-            "modified": "2024-03-04T18:14:21.299Z",
+            "modified": "2024-03-05T18:18:59.902Z",
             "headers": [
                 {
                     "name": "User-Agent",
@@ -317,7 +322,7 @@
             "reqType": "post",
             "auth": {
                 "type": "bearer",
-                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInJvbGVOYW1lIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE3MDk1NzMxNDgsImV4cCI6MTcwOTU4MDM0OH0.6cLDCl1UvaBcBYAT9ON442_5iWiSwc6Kx7GvKao1rTk"
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInJvbGVOYW1lIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE3MDk2NjI2NjIsImV4cCI6MTcwOTY2OTg2Mn0.VTsIwB8kFHlzKtNC2jcosqexeWzbL0AkKl43nzKn7A8"
             },
             "tests": []
         },
