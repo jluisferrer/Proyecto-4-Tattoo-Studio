@@ -39,7 +39,7 @@ app.post('/api/auth/login', login)  //ok
 //User routes
 app.get('/api/users', auth, isSuperAdmin, getUsers) //ok
 app.get('/api/users/profile/:id', auth, getUserById)      //ok
-app.put('/api/users/profile/:id', updateUserById)  //ok
+app.put('/api/users/profile/:id', auth, updateUserById)  //ok
 app.delete('/api/users/:id', auth, isSuperAdmin, deleteUserById)    //ok
 
 //Apointment routes
