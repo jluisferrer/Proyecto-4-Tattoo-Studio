@@ -20,7 +20,7 @@ export const PostAppointment = async (req: Request, res: Response) => {
 
         const newAppointment = await Appointment.create({
             appointmentDate: appointment_date,
-            user: ({ id: user_id }),
+            user: { id: user_id },
             service: { id: parseInt(service_id) }
         }).save();
 

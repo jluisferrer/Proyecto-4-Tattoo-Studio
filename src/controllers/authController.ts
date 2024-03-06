@@ -8,14 +8,14 @@ export const register = async (req: Request, res: Response) => {
   try {
 
     const email = req.body.email;
-    const password = req.body.password_hash;
+    const inputPassword = req.body.password_hash;
     const name = req.body.first_name;
     const lastName = req.body.last_name
 
 
 
 
-    if (password.length < 6 || password.length > 10) {
+    if (inputPassword.length < 6 || inputPassword.length > 10) {
       return res.status(400).json({
         success: false,
         message: "The password must be between 6 and 10 characters"
@@ -36,7 +36,7 @@ export const register = async (req: Request, res: Response) => {
 
 
 
-    const passwordEncrypted = bcrypt.hashSync(password, 8);
+    const passwordEncrypted = bcrypt.hashSync(inputPassword, 8);
 
 
 
@@ -50,14 +50,14 @@ export const register = async (req: Request, res: Response) => {
         id: 1
       }
     }).save()
-
+   const { password,...printUser}=newUser
     //todo enviar email
 
     res.status(201).json(
       {
         success: true,
         message: 'User registered successfully',
-        data: newUser
+        data: printUser
       }
     )
   } catch (error) {
