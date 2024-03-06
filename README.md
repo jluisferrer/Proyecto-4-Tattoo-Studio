@@ -201,7 +201,6 @@ PUT localhost:4001/api/appointments
  ```sh
 {
    "appointment_id": "6",
-   "user_id":"1",
    "appointment_date": "2024-03-10",
    "service_id": "2" 
 }
