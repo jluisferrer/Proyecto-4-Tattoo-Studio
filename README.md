@@ -221,8 +221,7 @@ POST localhost:4001/api/appointments/
 
  ```sh
 {
-   "appointment_date": "2024-03-10",
-   "user_id":"1",                        <-- INTRODUZCA AQUI SUS DATOS 
+   "appointment_date": "2024-03-10",                       <-- INTRODUZCA AQUI SUS DATOS 
    "service_id": "1"
 }
 ```
