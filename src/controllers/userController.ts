@@ -43,10 +43,10 @@ export const getUsers = async (req: Request, res: Response) => {
 }
 export const getUserById = async (req: Request, res: Response) => {
   try {
-    const userId = req.params.id;
+    const userId = req.tokenData.userId;
     const user = await User.findOneBy(
       {
-        id: parseInt(userId)
+        id:userId
       }
     )
     if (!user) {

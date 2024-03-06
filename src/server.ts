@@ -25,7 +25,7 @@ app.get('/healthy', (req, res) => {
 })
 
 // roles routes
-app.get('/roles', getRoles)
+// app.get('/roles', getRoles)
 app.post('/roles', auth, isSuperAdmin, createRole)
 app.put('/roles', auth, isSuperAdmin, updateRole)
 app.delete('/roles', auth, isSuperAdmin, deleteRole)
@@ -38,7 +38,7 @@ app.post('/api/auth/login', login)  //ok
 
 //User routes
 app.get('/api/users', auth, isSuperAdmin, getUsers) //ok
-app.get('/api/users/profile/:id', auth, getUserById)      //ok
+app.get('/api/users/profile/', auth, getUserById)      //ok
 app.put('/api/users/profile/:id', auth, updateUserById)  //ok
 app.delete('/api/users/:id', auth, isSuperAdmin, deleteUserById)    //ok
 
