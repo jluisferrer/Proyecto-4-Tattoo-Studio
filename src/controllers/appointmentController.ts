@@ -77,7 +77,7 @@ export const UpdateAppointment = async (req: Request, res: Response) => {
         return res.status(200).json({
             success: true,
             message: "Appointment updated succesfully ",
-            data: appointmentUpdated
+            data: appointmentUpdated,ServiceId 
         })
 
     }
