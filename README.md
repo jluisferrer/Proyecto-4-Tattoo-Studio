@@ -185,13 +185,13 @@ GET localhost:4001/api/services
 
 ***APPOINTMENTS***  
 
- - GET ALL APPOINTMENTS
+ - GET USER APPOINTMENTS
 
  ```sh
 GET localhost:4001/api/appointments
  ```
 
- - UPDATE APPOINTMENT BY ID
+ - UPDATE APPOINTMENT 
 
  ```sh
 PUT localhost:4001/api/appointments
