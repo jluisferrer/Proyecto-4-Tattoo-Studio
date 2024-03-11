@@ -6,6 +6,10 @@ import { User } from "../models/User";
 
 export const register = async (req: Request, res: Response) => {
   try {
+    console.log('------------------------------------------');
+    
+console.log(req.body);
+console.log('------------------------------------------');
 
     const email = req.body.email;
     const inputPassword = req.body.password_hash;
@@ -60,11 +64,11 @@ export const register = async (req: Request, res: Response) => {
         data: printUser
       }
     )
-  } catch (error) {
+  } catch (error: any) {
     res.status(500).json({
       success: false,
       message: "User cant be registered",
-      error: error
+      error: error.message
     })
   }
 }
