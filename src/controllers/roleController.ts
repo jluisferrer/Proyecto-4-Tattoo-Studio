@@ -6,17 +6,12 @@ export const getRoles = (req: Request, res: Response) => {
     {
       success: true,
       message: "Roles retrieved successfuly"
-
     }
   )
 }
 
-
 export const createRole = async (req: Request, res: Response) => {
   try {
-
-
-
     const name = req.body.name;
 
     if (name.length > 50) {
@@ -33,7 +28,6 @@ export const createRole = async (req: Request, res: Response) => {
     res.status(201).json(
       {
         success: true,
-
         message: "Role created",
         data: newRole
       }
@@ -48,10 +42,6 @@ export const createRole = async (req: Request, res: Response) => {
 }
 
 export const updateRole = (req: Request, res: Response) => {
-
-
-
-
   res.status(200).json(
     {
       success: true,
@@ -61,10 +51,6 @@ export const updateRole = (req: Request, res: Response) => {
 }
 
 export const deleteRole = (req: Request, res: Response) => {
-
-
-
-
   res.status(200).json(
     {
       success: true,

@@ -7,7 +7,6 @@ export const PostAppointment = async (req: Request, res: Response) => {
         const appointment_date = req.body.appointment_date;
         const user_id = req.tokenData.userId;
         const service_id = req.body.service_id;
-
         const service = await Service.findOneBy({
             id: parseInt(service_id)
         });
@@ -17,13 +16,11 @@ export const PostAppointment = async (req: Request, res: Response) => {
                 message: "Service not found"
             });
         }
-
         const newAppointment = await Appointment.create({
             appointmentDate: appointment_date,
             user: { id: user_id },
             service: { id: parseInt(service_id) }
         }).save();
-
         return res.status(201).json({
             success: true,
             message: "Appointment posted successfully",
@@ -44,23 +41,18 @@ export const UpdateAppointment = async (req: Request, res: Response) => {
         const UserId = req.tokenData.userId;
         const appointment_date = req.body.appointment_date;
         const ServiceId = req.body.service_id
-
-
         const appointment = await Appointment.findOneBy({
             id: parseInt(AppointmentId)
         })
-
         if (!appointment) {
             return res.status(400).json({
                 success: false,
                 message: "Appointment not found ",
-
             })
         }
         const appointmentUpdated = await Appointment.update(
             {
                 id: parseInt(AppointmentId),
-
                 user: {
                     id: UserId
                 }
@@ -71,17 +63,13 @@ export const UpdateAppointment = async (req: Request, res: Response) => {
                     id: 2
                 },
             },
-
         )
-
         return res.status(200).json({
             success: true,
             message: "Appointment updated succesfully ",
-            data: appointmentUpdated,ServiceId 
+            data: appointmentUpdated, ServiceId
         })
-
     }
-
     catch (error) {
         res.status(400).json({
             success: false,
@@ -95,7 +83,6 @@ export const RecoverAppointments = async (req: Request, res: Response) => {
     try {
         const AppointmentId = req.params.id;
         const UserId = req.tokenData.userId;
-
         const appointment = await Appointment.findOneBy({
             id: parseInt(AppointmentId)
         })
@@ -116,8 +103,6 @@ export const RecoverAppointments = async (req: Request, res: Response) => {
             success: true,
             message: "Appointment retrieved succesfully ",
             data: appointment
-
-
         })
     } catch (error) {
         res.status(500).json({
@@ -139,7 +124,6 @@ export const GetUserAppointments = async (req: Request, res: Response) => {
             success: true,
             message: "Appointments retrieved succesfully ",
             data: appointment
-
         })
     }
     catch (error) {
