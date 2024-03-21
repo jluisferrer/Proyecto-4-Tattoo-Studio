@@ -6,15 +6,13 @@ import { User } from "../models/User";
 
 export const register = async (req: Request, res: Response) => {
   try {
-
+    console.log('------------------------------------------');
+    console.log(req.body);
+    console.log('------------------------------------------');
     const email = req.body.email;
     const inputPassword = req.body.password_hash;
     const name = req.body.first_name;
     const lastName = req.body.last_name
-
-
-
-
     if (inputPassword.length < 6 || inputPassword.length > 10) {
       return res.status(400).json({
         success: false,
@@ -22,8 +20,6 @@ export const register = async (req: Request, res: Response) => {
 
       })
     }
-
-
     const validEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
     if (!validEmail.test(email)) {
       return res.status(400).json(
@@ -33,14 +29,7 @@ export const register = async (req: Request, res: Response) => {
         }
       )
     }
-
-
-
     const passwordEncrypted = bcrypt.hashSync(inputPassword, 8);
-
-
-
-
     const newUser = await User.create({
       name: name,
       lastName: lastName,
@@ -50,9 +39,8 @@ export const register = async (req: Request, res: Response) => {
         id: 1
       }
     }).save()
-   const { password,...printUser}=newUser
+    const { password, ...printUser } = newUser
     //todo enviar email
-
     res.status(201).json(
       {
         success: true,
@@ -60,11 +48,11 @@ export const register = async (req: Request, res: Response) => {
         data: printUser
       }
     )
-  } catch (error) {
+  } catch (error: any) {
     res.status(500).json({
       success: false,
       message: "User cant be registered",
-      error: error
+      error: error.message
     })
   }
 }
@@ -106,9 +94,7 @@ export const login = async (req: Request, res: Response) => {
       })
     }
     // devolver user
-
     // comparar passwords
-
     const isValidPassword = bcrypt.compareSync(password, user.password);
     if (!isValidPassword) {
       return res.status(400).json({
@@ -128,8 +114,6 @@ export const login = async (req: Request, res: Response) => {
         expiresIn: "2h"
       }
     )
-
-
     res.status(200).json({
       success: true,
       message: "User logged in successfully",
