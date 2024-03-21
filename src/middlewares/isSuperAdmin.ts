@@ -7,12 +7,10 @@ export const isSuperAdmin = (req: Request, res: Response, next: NextFunction) =>
                 {
                     success: false,
                     message: "UNAUTHORIZED",
-
                 })
         }
         next()
     }
-
     catch (error) {
         res.status(500).json(
             {

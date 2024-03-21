@@ -14,13 +14,13 @@ export const app: Application = express();
 app.use(express.json())
 
 app.get('/healthy', (req, res) => {
-    res.status(200).json(
-      {
-        success: true,
-        message: "Server is healthy"
-      }
-    );
-  })
+  res.status(200).json(
+    {
+      success: true,
+      message: "Server is healthy"
+    }
+  );
+})
 
 
 // roles routes

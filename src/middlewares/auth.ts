@@ -12,13 +12,10 @@ export const auth = async (req: Request, res: Response, next: NextFunction) => {
                     message: "UNAUTHORIZED"
                 })
         }
-
         jwt.verify(
             token,
             process.env.JWT_SECRET as string);
-
         const decoder = jwt.decode(token);
-
         req.tokenData = decoder as TokenData;
         next();
     } catch (error) {
@@ -29,6 +26,5 @@ export const auth = async (req: Request, res: Response, next: NextFunction) => {
                 error: error
             })
     }
-
 }
 
