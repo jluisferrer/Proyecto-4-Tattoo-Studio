@@ -1,3 +1,6 @@
+
+![OIG1](https://github.com/jluisferrer/Proyecto-4-Tattoo-Studio/assets/157707370/0e561733-e645-4f6c-9a2e-fa9ac28df33b)
+
 # Tattoo Studio ✒️
 
 Este es mi cuarto proyecto en la academia GeekHubs, se trata de una aplicación backend de un estudio de tatuajes donde puedes registrar usuarios con diferentes roles, loguear con estos, así como ver perfil de cada usuario y modificar algunos campos, también puedes ver los servicios que ofrece el estudio asi como reservar citas para diferentes tratamientos o modificar estas adaptándolas a tu disponibilidad. A continuación se explican mas detalles sobre el proyecto.
