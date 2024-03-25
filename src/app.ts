@@ -1,4 +1,5 @@
 import express, { Application } from "express";
+import "dotenv/config";
 import { createRole, deleteRole, getRoles, updateRole } from "./controllers/roleController";
 import { AppDataSource } from "./database/db";
 import { login, register } from "./controllers/authController";
@@ -34,7 +35,7 @@ app.put('/roles/:id', auth, isSuperAdmin, updateRole)
 app.delete('/roles/:id', auth, isSuperAdmin, deleteRole)
 
 //Auth routes
-app.post('/api/register', register) //ok
+app.post('/api/auth/register', register) //ok
 app.post('/api/auth/login', login)  //ok
 
 //User routes

@@ -6,13 +6,15 @@ import { User } from "../models/User";
 
 export const register = async (req: Request, res: Response) => {
   try {
-    console.log('------------------------------------------');
-    console.log(req.body);
-    console.log('------------------------------------------');
+    // console.log('------------------------------------------');
+    // console.log(req.body);
+    // console.log('------------------------------------------');
+
     const email = req.body.email;
     const inputPassword = req.body.password_hash;
     const name = req.body.first_name;
     const lastName = req.body.last_name
+
     if (inputPassword.length < 6 || inputPassword.length > 10) {
       return res.status(400).json({
         success: false,
@@ -30,6 +32,7 @@ export const register = async (req: Request, res: Response) => {
       )
     }
     const passwordEncrypted = bcrypt.hashSync(inputPassword, 8);
+
     const newUser = await User.create({
       name: name,
       lastName: lastName,
@@ -48,11 +51,11 @@ export const register = async (req: Request, res: Response) => {
         data: printUser
       }
     )
-  } catch (error: any) {
+  } catch (error) {
     res.status(500).json({
       success: false,
       message: "User cant be registered",
-      error: error.message
+      
     })
   }
 }
