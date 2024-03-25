@@ -82,7 +82,7 @@ export const login = async (req: Request, res: Response) => {
       },
       select: {
         id: true,
-        password: true,
+        password: true,        
         email: true,
         role: {
           name: true
@@ -110,7 +110,9 @@ export const login = async (req: Request, res: Response) => {
     const token = jwt.sign(
       {
         userId: user.id,
-        roleName: user.role.name
+        roleName: user.role.name,
+        name: user.name
+
       },
       process.env.JWT_SECRET as string,
       {
