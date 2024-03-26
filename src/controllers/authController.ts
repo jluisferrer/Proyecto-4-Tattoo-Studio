@@ -82,7 +82,8 @@ export const login = async (req: Request, res: Response) => {
       },
       select: {
         id: true,
-        password: true,        
+        password: true, 
+        name:true,       
         email: true,
         role: {
           name: true

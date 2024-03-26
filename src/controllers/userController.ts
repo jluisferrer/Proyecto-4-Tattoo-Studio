@@ -71,11 +71,11 @@ export const getUserById = async (req: Request, res: Response) => {
 
 export const updateUserById = async (req: Request, res: Response) => {
   try {
-    const userId = req.params.id;
+    const userId = req.tokenData.userId;
     const name = req.body.first_name;
     const user = await User.findOneBy(
       {
-        id: parseInt(userId)
+        id: userId
       }
     )
     if (!user) {
@@ -87,7 +87,7 @@ export const updateUserById = async (req: Request, res: Response) => {
 
     const userUpdated = await User.update(
       {
-        id: parseInt(userId)
+        id: userId
       },
       {
         name: name
