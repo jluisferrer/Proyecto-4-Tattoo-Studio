@@ -60,14 +60,14 @@ export const UpdateAppointment = async (req: Request, res: Response) => {
             {
                 appointmentDate: appointment_date,
                 service: {
-                    id: 2
+                    id: parseInt(ServiceId)
                 },
             },
         )
         return res.status(200).json({
             success: true,
             message: "Appointment updated succesfully ",
-            data: appointmentUpdated, ServiceId
+            data: appointmentUpdated
         })
     }
     catch (error) {
@@ -118,6 +118,18 @@ export const GetUserAppointments = async (req: Request, res: Response) => {
         const appointment = await Appointment.find({
             where: {
                 user: { id: UserId }
+            },
+            relations: {
+                service: true,
+                user: true
+            },
+            select: {
+                service: {
+                    serviceName: true
+                },
+                user: {
+                    name: true
+                }
             }
         })
         res.status(200).json({
