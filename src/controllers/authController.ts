@@ -83,7 +83,8 @@ export const login = async (req: Request, res: Response) => {
       select: {
         id: true,
         password: true, 
-        name:true,       
+        name:true,
+        lastName:true,       
         email: true,
         role: {
           name: true
@@ -112,7 +113,8 @@ export const login = async (req: Request, res: Response) => {
       {
         userId: user.id,
         roleName: user.role.name,
-        name: user.name
+        name: user.name,
+        lastName: user.lastName
 
       },
       process.env.JWT_SECRET as string,

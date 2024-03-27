@@ -72,7 +72,7 @@ export const getUserById = async (req: Request, res: Response) => {
 export const updateUserById = async (req: Request, res: Response) => {
   try {
     const userId = req.tokenData.userId;
-    const name = req.body.first_name;
+    const name = req.body.name;
     const user = await User.findOneBy(
       {
         id: userId
@@ -85,18 +85,21 @@ export const updateUserById = async (req: Request, res: Response) => {
       })
     }
 
-    const userUpdated = await User.update(
+    const updateResult = await User.update ({id:userId}, {name: name})
+
+    if(updateResult.affected === 0){
+      throw new Error("User cant be updated")
+    }
+
+    const updatedUser = await User.findOneBy(
       {
         id: userId
       },
-      {
-        name: name
-      }
     );
     res.status(200).json({
       success: true,
       message: "User updated",
-      data: userUpdated
+      data: updatedUser
     })
   } catch (error) {
     res.status(500).json({
