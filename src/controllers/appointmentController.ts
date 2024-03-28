@@ -4,27 +4,34 @@ import { Service } from "../models/Service";
 
 export const PostAppointment = async (req: Request, res: Response) => {
     try {
-        const appointment_date = req.body.appointment_date;
+        const appointment_date = req.body.appointmentDate;
         const user_id = req.tokenData.userId;
         const service_id = req.body.service_id;
-        const service = await Service.findOneBy({
-            id: parseInt(service_id)
-        });
+
+        // Crear la cita
+        const newAppointment = await Appointment.create({
+            appointmentDate: appointment_date,
+            user: { id: user_id },
+            service: { id: parseInt(service_id) }
+        }).save();
+
+        // Obtener el nombre del servicio
+        const service = await Service.findOneBy({ id: parseInt(service_id) });
         if (!service) {
             return res.status(400).json({
                 success: false,
                 message: "Service not found"
             });
         }
-        const newAppointment = await Appointment.create({
-            appointmentDate: appointment_date,
-            user: { id: user_id },
-            service: { id: parseInt(service_id) }
-        }).save();
+
+        // Enviar la respuesta con el nombre del servicio
         return res.status(201).json({
             success: true,
             message: "Appointment posted successfully",
-            data: newAppointment
+            data: {
+                ...newAppointment, // Datos de la cita
+                serviceName: service.serviceName // Nombre del servicio
+            }
         });
     } catch (error) {
         return res.status(400).json({
@@ -146,3 +153,36 @@ export const GetUserAppointments = async (req: Request, res: Response) => {
         })
     }
 }
+export const AppointmentDelete = async (req: Request, res: Response) => {
+    try {
+        const appointmentId = parseInt(req.params.id);
+        const userId = req.tokenData.userId; // Asegúrate de que 'userId' esté en camelCase si así está definido en tu modelo
+
+        // Encuentra la cita asegurándote de que el usuario asociado coincida con el userId del token
+        const appointment = await Appointment.findOne({
+            where: { id: appointmentId, user: { id: userId } },
+            relations: ['user'] // Esto incluirá la relación con el usuario en la consulta
+        });
+
+        if (!appointment) {
+            return res.status(404).json({
+                success: false,
+                message: "Appointment not found or user does not have permission."
+            });
+        }
+
+        // Si la cita existe y pertenece al usuario, proceder a borrarla
+        await Appointment.delete({ id: appointmentId });
+
+        return res.status(200).json({
+            success: true,
+            message: "Appointment deleted successfully."
+        });
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "An error occurred while deleting the appointment.",
+            error: error
+        });
+    }
+};
