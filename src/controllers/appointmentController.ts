@@ -156,24 +156,18 @@ export const GetUserAppointments = async (req: Request, res: Response) => {
 export const AppointmentDelete = async (req: Request, res: Response) => {
     try {
         const appointmentId = parseInt(req.params.id);
-        const userId = req.tokenData.userId; // Asegúrate de que 'userId' esté en camelCase si así está definido en tu modelo
-
-        // Encuentra la cita asegurándote de que el usuario asociado coincida con el userId del token
+        const userId = req.tokenData.userId; 
         const appointment = await Appointment.findOne({
             where: { id: appointmentId, user: { id: userId } },
-            relations: ['user'] // Esto incluirá la relación con el usuario en la consulta
+            relations: ['user'] 
         });
-
         if (!appointment) {
             return res.status(404).json({
                 success: false,
                 message: "Appointment not found or user does not have permission."
             });
         }
-
-        // Si la cita existe y pertenece al usuario, proceder a borrarla
         await Appointment.delete({ id: appointmentId });
-
         return res.status(200).json({
             success: true,
             message: "Appointment deleted successfully."
