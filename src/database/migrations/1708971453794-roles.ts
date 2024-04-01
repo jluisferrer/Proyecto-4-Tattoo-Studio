@@ -7,6 +7,7 @@ export class Roles1708971453794 implements MigrationInterface {
             new Table({
                 name: "roles",
                 columns: [
+                    
                     {
                         name: "id",
                         type: "int",
