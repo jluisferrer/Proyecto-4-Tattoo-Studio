@@ -85,9 +85,9 @@ export const updateUserById = async (req: Request, res: Response) => {
       })
     }
 
-    const updateResult = await User.update ({id:userId}, {name: name})
+    const updateResult = await User.update({ id: userId }, { name: name })
 
-    if(updateResult.affected === 0){
+    if (updateResult.affected === 0) {
       throw new Error("User cant be updated")
     }
 
