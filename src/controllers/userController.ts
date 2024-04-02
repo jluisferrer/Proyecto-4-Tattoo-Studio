@@ -121,9 +121,16 @@ export const deleteUserById = async (req: Request, res: Response) => {
     if (!userToRemove) {
       return res.status(404).json({
         success: false,
-        message: "User cant be deleted",
+        message: "User cannot be deleted",
       })
     }
+    if (userToRemove.role === "super_admin") {
+      return res.status(403).json({
+        success: false,
+        message: "Super admin cannot be deleted",
+      });
+    }
+    await User.delete(userToRemove);
     const userDeleted = await User.delete(userToRemove)
     res.status(200).json({
       success: false,

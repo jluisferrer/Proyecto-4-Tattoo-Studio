@@ -6,8 +6,7 @@ export class Roles1708971453794 implements MigrationInterface {
         await queryRunner.createTable(
             new Table({
                 name: "roles",
-                columns: [
-                    
+                columns: [                    
                     {
                         name: "id",
                         type: "int",
