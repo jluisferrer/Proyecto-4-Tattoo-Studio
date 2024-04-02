@@ -73,6 +73,7 @@ export const updateUserById = async (req: Request, res: Response) => {
   try {
     const userId = req.tokenData.userId;
     const name = req.body.name;
+    const lastName = req.body.lastName
     const user = await User.findOneBy(
       {
         id: userId
@@ -85,7 +86,7 @@ export const updateUserById = async (req: Request, res: Response) => {
       })
     }
 
-    const updateResult = await User.update({ id: userId }, { name: name })
+    const updateResult = await User.update({ id: userId }, { name: name, lastName: lastName })
 
     if (updateResult.affected === 0) {
       throw new Error("User cant be updated")
@@ -124,7 +125,7 @@ export const deleteUserById = async (req: Request, res: Response) => {
         message: "User cannot be deleted",
       })
     }
-    if (userToRemove.role === "super_admin") {
+    if (userToRemove.roles === "super_admin") {
       return res.status(403).json({
         success: false,
         message: "Super admin cannot be deleted",
